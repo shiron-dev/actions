@@ -1,8 +1,10 @@
 name: update-pr-comment
 
 on:
-  pull_request:
-
+  workflow_run:
+    workflows: [Main CI]
+    types:
+      - completed
 
 jobs:
   update-pr-comment:
