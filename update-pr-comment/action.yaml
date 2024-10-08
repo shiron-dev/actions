@@ -2,9 +2,10 @@ name: PR Commit Message Update
 description: Update PR commit message with commit logs
 
 inputs:
-  github_token:
+  GITHUB_TOKEN:
     description: "GITHUB_TOKEN."
     default: "${{ github.token }}"
+    required: false
 
 runs:
   using: "composite"
@@ -47,4 +48,4 @@ runs:
             pull_number: context.issue.number,
             body: newDescription
           });
-        github-token: ${{ inputs.github-token }}
+        github-token: ${{ inputs.github_token }}

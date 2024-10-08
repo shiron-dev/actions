@@ -14,4 +14,3 @@ jobs:
           fetch-depth: 0
       - name: Update PR commit message
         uses: ./update-pr-comment
-
