@@ -1,0 +1,50 @@
+name: Main CI
+
+on:
+  pull_request:
+    branches:
+      - "main"
+
+jobs:
+  all-status-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs:
+      - ci-req-check
+      - yaml-lint
+      - action-lint
+    steps:
+      - name: All status check
+        run: echo "All status check passed"
+
+  ci-req-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check all-status-check
+        run: |
+          diff \
+            <(yq ".jobs | del(.all-status-check) | keys.[]" .github/workflows/ci.yml) \
+            <(yq ".jobs.all-status-check.needs.[]" .github/workflows/ci.yml)
+
+  yaml-lint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: reviewdog/action-yamllint@v1.19.0
+        with:
+          level: warning
+          yamllint_flags: "-c .yamllint ."
+          fail_on_error: true
+
+  action-lint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: reviewdog/action-actionlint@v1.57.0
+        with:
+          level: warning
+          fail_on_error: true
