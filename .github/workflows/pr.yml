@@ -1,0 +1,16 @@
+name: update-pr-comment
+
+on:
+  pull_request:
+
+
+jobs:
+  update-pr-comment:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Update PR commit message
+        uses: ./update-pr-comment
