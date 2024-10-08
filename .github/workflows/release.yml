@@ -23,3 +23,5 @@ jobs:
       - name: Release please
         uses: googleapis/release-please-action@v4
         id: release
+        with:
+          release-type: simple
