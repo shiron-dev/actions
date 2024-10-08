@@ -13,6 +13,7 @@ jobs:
       - ci-req-check
       - yaml-lint
       - action-lint
+      - setup-node
     steps:
       - name: All status check
         run: echo "All status check passed"
@@ -48,3 +49,9 @@ jobs:
         with:
           level: warning
           fail_on_error: true
+
+  setup-node:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./setup-node
