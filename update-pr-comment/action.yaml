@@ -1,0 +1,50 @@
+name: PR Commit Message Update
+description: Update PR commit message with commit logs
+
+inputs:
+  github_token:
+    description: "GITHUB_TOKEN."
+    default: "${{ github.token }}"
+
+runs:
+  using: "composite"
+  steps:
+    - name: Set the output
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const { data: pr } = await github.rest.pulls.get({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            pull_number: context.issue.number
+          });
+
+          // PR description
+          const description = pr.body || "";
+
+          // Check if "--- commit logs ---" exists
+          const marker = "--- commit logs ---";
+          const command = 'git log --format="* %s" origin/${{ github.event.pull_request.base.ref }}..${{ github.event.pull_request.head.sha }} --reverse';
+          const { stdout: commitLogs } = await exec.getExecOutput(command);
+
+          let newDescription;
+          const markerIndex = description.indexOf(marker);
+          if (markerIndex !== -1) {
+            // If marker exists, replace everything after it
+            newDescription = description.substring(0, markerIndex + marker.length) + "\n" + commitLogs;
+          } else {
+            // If marker doesn't exist, append it to the description
+            newDescription = description + "\n\n" + marker + "\n" + commitLogs;
+          }
+
+          // Output the new description
+          core.setOutput("new_description", newDescription);
+
+          // Update the PR with the new description
+          await github.rest.pulls.update({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            pull_number: context.issue.number,
+            body: newDescription
+          });
+        github-token: ${{ inputs.github-token }}
