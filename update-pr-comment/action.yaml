@@ -10,6 +10,16 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: Check if auto-merge is enabled
+      shell: bash
+      run: |
+        AUTO_MERGE_STATUS=$(gh pr view ${{ github.event.pull_request.number }} --json autoMergeRequest --jq '.autoMergeRequest != null')
+        echo "AUTO_MERGE_STATUS=$AUTO_MERGE_STATUS" >> $GITHUB_ENV
+    - name: Disable auto-merge if enabled
+      if: env.AUTO_MERGE_STATUS == 'true'
+      shell: bash
+      run: |
+        gh pr merge --disable-auto ${{ github.event.pull_request.number }}
     - name: Set the output
       uses: actions/github-script@v7
       with:
@@ -70,3 +80,8 @@ runs:
           } else {
             throw new Error('Squash merge is not correctly configured.');
           }
+    - name: Re-enable auto-merge if previously enabled
+      if: env.AUTO_MERGE_STATUS == 'true'
+      shell: bash
+      run: |
+        gh pr merge --auto ${{ github.event.pull_request.number }}
