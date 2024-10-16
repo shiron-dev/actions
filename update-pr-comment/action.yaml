@@ -25,7 +25,7 @@ runs:
 
           // Check if "--- commit logs ---" exists
           const marker = "--- commit logs ---";
-          const command = 'git log --format="* %s" origin/${{ github.event.pull_request.base.ref }}..${{ github.event.pull_request.head.sha }} --reverse';
+          const command = 'git log --pretty=format:"* %s%n%b%n%n" origin/${{ github.event.pull_request.base.ref }}..${{ github.event.pull_request.head.sha }} --reverse';
           const { stdout: commitLogs } = await exec.getExecOutput(command);
 
           let newDescription;
