@@ -45,7 +45,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
-      - uses: reviewdog/action-actionlint@v1.60.0
+      - uses: reviewdog/action-actionlint@v1.61.0
         with:
           level: warning
           fail_on_error: true
