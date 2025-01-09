@@ -1,0 +1,22 @@
+name: 'Matrix outputs - write'
+description: 'Write outputs for matrix'
+author: shiron4710.dev@gmail.com
+branding:
+  icon: 'chevrons-up'
+  color: 'white'
+inputs:
+  matrix-step-name:
+    required: false
+    description: "Matrix step name"
+  matrix-key:
+    required: false
+    description: "Matrix key"
+  outputs:
+    required: false
+    description: "YAML structured map of outputs"
+outputs:
+  result:
+    description: "Outputs result (Deprecated!!!)"
+runs:
+  using: "node20"
+  main: "index.js"

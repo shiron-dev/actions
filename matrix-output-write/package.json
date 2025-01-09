@@ -1,0 +1,18 @@
+{
+  "name": "matrix-output-write",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "shiron-dev <shiron4710.dev@gmail.com>",
+  "license": "",
+  "dependencies": {
+    "@actions/artifact": "^2.2.0",
+    "@actions/core": "^1.11.1",
+    "tmp": "^0.2.3",
+    "yaml": "^2.7.0"
+  }
+}
