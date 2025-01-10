@@ -25,3 +25,20 @@ jobs:
         id: release
         with:
           release-type: simple
+      - name: Run install
+        working-directory: ./matrix-output-write
+        run: |
+          pnpm install --frozen-lockfile
+      - name: build matrix-output-write
+        working-directory: ./matrix-output-write
+        run: |
+          pnpm run build
+      - name: Commit changes
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch ${{ fromJson(steps.release.outputs.pr).headBranchName }}
+          git add .
+          git status
+          git commit -m "chore: build matrix-output-write"
+          git push
