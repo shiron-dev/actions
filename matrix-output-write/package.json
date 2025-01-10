@@ -9,7 +9,9 @@
     "start": "run-p build && node dist/index.js",
     "build": "tsc",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "type-check": "tsc --noEmit",
+    "test": "vitest"
   },
   "dependencies": {
     "@actions/artifact": "^2.2.0",
@@ -23,6 +25,7 @@
     "@types/node": "^22.10.5",
     "eslint": "^9.17.0",
     "eslint-plugin-format": "^1.0.1",
-    "npm-run-all": "^4.1.5"
+    "npm-run-all": "^4.1.5",
+    "vitest": "^2.1.8"
   }
 }

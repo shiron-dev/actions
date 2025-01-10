@@ -1,12 +1,12 @@
 import type { UploadArtifactOptions } from "@actions/artifact";
 import type { Buffer } from "node:buffer";
+import type { ActionsCore } from "./core";
 import * as crypto from "node:crypto";
 import * as fs from "node:fs";
 import { DefaultArtifactClient } from "@actions/artifact";
-import * as core from "@actions/core";
 import * as yaml from "yaml";
 
-async function run(): Promise<void> {
+export async function run(core: ActionsCore): Promise<void> {
   try {
     const step_name: string | undefined = core.getInput("matrix-step-name");
     const matrix_key: string | undefined = core.getInput("matrix-key");
@@ -93,5 +93,3 @@ ${error}`;
     core.setFailed(error.message);
   }
 }
-
-run();
