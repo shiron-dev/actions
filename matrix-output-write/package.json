@@ -1,18 +1,28 @@
 {
   "name": "matrix-output-write",
+  "type": "module",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
   "author": "shiron-dev <shiron4710.dev@gmail.com>",
   "license": "",
+  "keywords": [],
+  "scripts": {
+    "start": "run-p build && node dist/index.js",
+    "build": "tsc",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
   "dependencies": {
     "@actions/artifact": "^2.2.0",
     "@actions/core": "^1.11.1",
     "tmp": "^0.2.3",
+    "typescript": "^5.7.3",
     "yaml": "^2.7.0"
+  },
+  "devDependencies": {
+    "@shiron-dev/eslint-config": "^2.1.0",
+    "@types/node": "^22.10.5",
+    "eslint": "^9.17.0",
+    "eslint-plugin-format": "^1.0.1",
+    "npm-run-all": "^4.1.5"
   }
 }
