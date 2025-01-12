@@ -25,6 +25,7 @@ jobs:
         id: release
         with:
           release-type: simple
+      - uses: shiron-dev/actions/setup-node@80f5f1513667e3070306b37e57021218addf46cb # v1.1.0
       - name: Run install
         working-directory: ./matrix-output-write
         run: |
