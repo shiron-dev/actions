@@ -14,6 +14,7 @@ jobs:
       - yaml-lint
       - action-lint
       - setup-node
+      - matrix-output-write-test
     steps:
       - name: All status check
         run: echo "All status check passed"
@@ -56,3 +57,28 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: ./setup-node
+
+  matrix-output-write-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: ./matrix-output-write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shiron-dev/actions/setup-node@80f5f1513667e3070306b37e57021218addf46cb # v1.1.0
+      - name: Run install
+        run: |
+          pnpm install --frozen-lockfile
+      - name: Run lint
+        run: |
+          pnpm run lint
+      - name: Run type-check
+        run: |
+          pnpm run type-check
+      - name: Run test
+        run: |
+          pnpm run test
+      - name: Run build
+        run: |
+          pnpm run build
