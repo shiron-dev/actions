@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.2.0](https://github.com/shiron-dev/actions/compare/v1.1.0...v1.2.0) (2025-01-13)
+
+
+### Features
+
+* **matrix-output:** matrix-output read/write ([#21](https://github.com/shiron-dev/actions/issues/21)) ([f278fe7](https://github.com/shiron-dev/actions/commit/f278fe78a9f53e6400949b096733c956c053e6c7))
+* **matrix-output:** to ts scripts ([#24](https://github.com/shiron-dev/actions/issues/24)) ([362b2c9](https://github.com/shiron-dev/actions/commit/362b2c98dbc683577ff1663631274e2789a1cc19))
+
+
+### Bug Fixes
+
+* **deps:** update dependency @actions/artifact to ^2.2.1 ([#32](https://github.com/shiron-dev/actions/issues/32)) ([5ddd0f4](https://github.com/shiron-dev/actions/commit/5ddd0f46ceb511cd7b2f77b5b91ce9b9563949b6))
+
 ## [1.1.0](https://github.com/shiron-dev/actions/compare/v1.0.0...v1.1.0) (2024-10-16)
 
 
