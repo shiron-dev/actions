@@ -23,7 +23,7 @@
   "devDependencies": {
     "@shiron-dev/eslint-config": "2.1.0",
     "@types/node": "22.10.5",
-    "@vercel/ncc": "^0.38.3",
+    "@vercel/ncc": "0.38.3",
     "eslint": "9.17.0",
     "eslint-plugin-format": "1.0.1",
     "npm-run-all2": "5.0.0"
