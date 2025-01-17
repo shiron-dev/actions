@@ -31,7 +31,7 @@ importers:
         specifier: 22.10.5
         version: 22.10.5
       '@vercel/ncc':
-        specifier: ^0.38.3
+        specifier: 0.38.3
         version: 0.38.3
       eslint:
         specifier: 9.17.0
