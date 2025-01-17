@@ -1,0 +1,121 @@
+name: matrix-output check
+
+on:
+  pull_request:
+    branches:
+      - "main"
+    paths:
+      - ".github/workflows/**"
+      - "matrix-output-*/**"
+
+jobs:
+  matrix-output-write:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      matrix:
+        package: ["package1", "package2"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./matrix-output-write
+        with:
+          matrix-step-name: ${{ github.job }}
+          matrix-key: ${{ matrix.package }}
+          outputs: |-
+            dockerfiles: ["${{ matrix.package }}/Dockerfile1", "${{ matrix.package }}/Dockerfile2"]
+            key1: ${{ matrix.package }}-value1
+            key2: ${{ matrix.package }}-value2
+  read-package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: matrix-output-write
+    strategy:
+      matrix:
+        package: ["package1", "package2"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./matrix-output-read
+        id: read
+        with:
+          matrix-step-name: matrix-output-write
+          matrix-key: ${{ matrix.package }}
+      - run: echo '${{ steps.read.outputs.result }}'
+      - run: echo '${{ toJSON(fromJSON(steps.read.outputs.result)[0]) }}'
+      - run: echo '${{ toJSON(fromJSON(steps.read.outputs.result)[0].value) }}'
+      - run: echo '${{ fromJSON(steps.read.outputs.result)[0].value.key1 }}'
+  read-key:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: matrix-output-write
+    strategy:
+      matrix:
+        key: ["key1", "key2"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./matrix-output-read
+        id: read
+        with:
+          matrix-step-name: matrix-output-write
+          output-key: ${{ matrix.key }}
+      - run: echo '${{ steps.read.outputs.result }}'
+  read-package-key:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: matrix-output-write
+    strategy:
+      matrix:
+        package: ["package1", "package2"]
+        key: ["key1", "key2"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./matrix-output-read
+        id: read
+        with:
+          matrix-step-name: matrix-output-write
+          matrix-key: ${{ matrix.package }}
+          output-key: ${{ matrix.key }}
+      - run: echo '${{ steps.read.outputs.result }}'
+  read-all:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: matrix-output-write
+    outputs:
+      result: "${{ steps.read.outputs.result }}"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./matrix-output-read
+        id: read
+        with:
+          matrix-step-name: matrix-output-write
+      - name: Print outputs
+        run: |
+          echo '${{ steps.read.outputs.result }}'
+  read:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: matrix-output-write
+    outputs:
+      result: "${{ steps.jq.outputs.result }}"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./matrix-output-read
+        id: read
+        with:
+          matrix-step-name: matrix-output-write
+          output-key: dockerfiles
+      - name: jq
+        id: jq
+        run: |
+          echo '${{ steps.read.outputs.result }}'
+          result=$( echo '${{ steps.read.outputs.result }}' | jq -c '[.[] | .key as $k | .value[] | {key: $k, value: .}]' )
+          echo "result=$result" >> "$GITHUB_OUTPUT"
+  matrix-output-read:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: read
+    strategy:
+      matrix:
+        kv: ${{ fromJSON(needs.read.outputs.result) }}
+    name: ${{ matrix.kv.key }}-${{ matrix.kv.value }}
+    steps:
+      - uses: actions/checkout@v4
