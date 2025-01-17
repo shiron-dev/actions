@@ -26,6 +26,6 @@
     "@vercel/ncc": "0.38.3",
     "eslint": "9.17.0",
     "eslint-plugin-format": "1.0.1",
-    "npm-run-all2": "5.0.0"
+    "npm-run-all2": "5.0.2"
   }
 }
