@@ -1,21 +1,18 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
+    "target": "es2020",
+    "module": "es2022",
     "lib": ["ESNext"],
-    "baseUrl": ".",
-    "module": "ESNext",
-    "moduleResolution": "Bundler",
-    "paths": {
-      "@/*": ["./src/*"]
-    },
-    "resolveJsonModule": true,
+    "moduleResolution": "node",
     "strict": true,
-    "outDir": "./dist",
+    "skipLibCheck": true,
+    "declaration": true,
+    "pretty": true,
+    "newLine": "lf",
+    "outDir": "build",
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
-    "skipLibCheck": true
+    "allowJs": true
   },
-  "include": ["**/*.ts"],
-  "compileOnSave": false
+  "exclude": ["node_modules", "src/**/*.test.ts"],
+  "include": ["src/**/*.ts", "test/**/*.ts"]
 }

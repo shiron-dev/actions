@@ -19,4 +19,4 @@ outputs:
     description: Outputs result (Deprecated!!!)
 runs:
   using: node20
-  main: index.js
+  main: dist/index.js
