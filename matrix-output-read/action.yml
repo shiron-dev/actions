@@ -1,0 +1,46 @@
+name: 'Matrix outputs - read'
+description: 'Read outputs for matrix'
+author: shiron4710.dev@gmail.com
+branding:
+  icon: 'chevrons-down'
+  color: 'white'
+inputs:
+  matrix-step-name:
+    required: true
+    description: "Matrix step name"
+  matrix-key:
+    description: "Search matrix key"
+  output-key:
+    description: "Search output key"
+outputs:
+  result:
+    description: "Outputs result"
+    value: ${{ steps.context.outputs.result }}
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/download-artifact@v4
+    - id: context
+      shell: bash
+      run: |
+        result=$(find ./ -name "matrix-output-write-dd7fd3220ec9" -maxdepth 2 -exec find {} -name "${{ inputs.matrix-step-name }}" -maxdepth 1 \; | xargs cat | jq -n '[inputs | to_entries[0] | {key: .key, value: .value}]')
+        if [ -n "${{ inputs.matrix-key}}" ]; then
+          result=$( echo "$result" | jq -r '[.[] | select(.key == "package1")]' )
+        fi
+        if [ -n "${{ inputs.output-key }}" ]; then
+          result=$( echo "$result" | jq -r '[ .[] | {key: .key, value: .value.["${{ inputs.output-key }}"]}]' )
+        fi
+
+        if [ -n "${{ inputs.matrix-key }}" ]; then
+          result=$( echo "$result" | jq -r '.[]' )
+          if [ -n "${{ inputs.output-key }}" ]; then
+            result=$( echo "$result" | jq -r '.value' )
+          fi
+        fi
+
+        EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+        {
+          echo "result<<$EOF"
+          echo "$result"
+          echo "$EOF"
+        } >> $GITHUB_OUTPUT
