@@ -20,10 +20,12 @@ runs:
   using: "composite"
   steps:
     - uses: actions/download-artifact@v4
+      with:
+        pattern: matrix-output-dd7fd3220ec9-*
     - id: context
       shell: bash
       run: |
-        result=$(find ./ -name "matrix-output-write-dd7fd3220ec9" -maxdepth 2 -exec find {} -name "${{ inputs.matrix-step-name }}" -maxdepth 1 \; | xargs cat | jq -n '[inputs | to_entries[0] | {key: .key, value: .value}]')
+        result=$(find ./ -name "matrix-output-dd7fd3220ec9" -maxdepth 2 -exec find {} -name "${{ inputs.matrix-step-name }}" -maxdepth 1 \; | xargs cat | jq -n '[inputs | to_entries[0] | {key: .key, value: .value}]')
         if [ -n "${{ inputs.matrix-key}}" ]; then
           result=$( echo "$result" | jq -r '[.[] | select(.key == "package1")]' )
         fi
