@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/shiron-dev/actions/compare/v1.2.0...v1.2.1) (2025-01-22)
+
+
+### Bug Fixes
+
+* add matrix-output prefix ([#45](https://github.com/shiron-dev/actions/issues/45)) ([014bda7](https://github.com/shiron-dev/actions/commit/014bda792232605a74cf26bf31fc056590eb9ba6))
+
 ## [1.2.0](https://github.com/shiron-dev/actions/compare/v1.1.0...v1.2.0) (2025-01-17)
 
 
