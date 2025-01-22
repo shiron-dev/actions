@@ -6,7 +6,8 @@ import { DefaultArtifactClient } from "@actions/artifact";
 import * as core from "@actions/core";
 import * as yaml from "yaml";
 
-const writeDir = "./matrix-output-write-dd7fd3220ec9";
+const writeDir = "./matrix-output-dd7fd3220ec9";
+const artifactPrefix = "matrix-output-dd7fd3220ec9";
 
 async function run() {
   try {
@@ -84,7 +85,7 @@ ${error}`;
       const hex: string = hashSum.digest("hex");
 
       const artifactClient: DefaultArtifactClient = new DefaultArtifactClient();
-      const artifactName: string = hex;
+      const artifactName: string = `${artifactPrefix}-${hex}`;
       const files: string[] = [
         filePath,
       ];
