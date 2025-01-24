@@ -15,6 +15,7 @@ jobs:
       - action-lint
       - setup-node
       - matrix-output-write-test
+      - post-step-check
     steps:
       - name: All status check
         run: echo "All status check passed"
@@ -79,3 +80,16 @@ jobs:
       - name: Run build
         run: |
           pnpm run build
+
+  post-step-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./post-step
+        with:
+          run: echo "Run post step"
+          post: echo "Post step"
+      - uses: ./post-step
+        with:
+          post: echo "Post step2"
