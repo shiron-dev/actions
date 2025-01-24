@@ -1,0 +1,36 @@
+name: GitHub App Token
+description: Generate a GitHub App token
+author: shiron4710.dev@gmail.com
+
+inputs:
+  app-id:
+    required: true
+    description: "App ID"
+  private-key:
+    required: true
+    description: "App private key"
+
+outputs:
+  token:
+    description: "GitHub App token"
+    value: ${{ steps.generate.outputs.token }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: Set GitHub Path
+      run: echo "$GITHUB_ACTION_PATH" >> $GITHUB_PATH
+      shell: bash
+      env:
+        GITHUB_ACTION_PATH: ${{ github.action_path }}
+    - id: generate
+      run: generate.sh
+      shell: bash
+      env:
+        APP_ID: ${{ inputs.app-id }}
+        PRIVATE_KEY: ${{ inputs.private-key }}
+    - uses: shiron-dev/actions/post-step@main
+      with:
+        post: delete.sh
+      env:
+        GITHUB_TOKEN: ${{ steps.generate.outputs.token }}

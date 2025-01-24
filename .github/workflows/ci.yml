@@ -16,6 +16,7 @@ jobs:
       - setup-node
       - matrix-output-write-test
       - post-step-check
+      - github-app-token-check
     steps:
       - name: All status check
         run: echo "All status check passed"
@@ -93,3 +94,26 @@ jobs:
       - uses: ./post-step
         with:
           post: echo "Post step2"
+
+  github-app-token-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./post-step
+        with:
+          post: |
+            GITHUB_TOKEN="${GITHUB_APP_TOKEN}" gh pr status
+            if [ $? -eq 0 ]; then
+              echo "Failed to run gh pr status"
+              exit 1
+            fi
+      - uses: ./github-app-token
+        id: github-app-token
+        with:
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.PRIVATE_KEY }}
+      - name: Check token
+        run: |
+          echo "GITHUB_APP_TOKEN=${{ steps.github-app-token.outputs.token }}" >> "${GITHUB_ENV}"
+          GITHUB_TOKEN="${{ steps.github-app-token.outputs.token }}" gh pr status
