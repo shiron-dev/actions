@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.3.0](https://github.com/shiron-dev/actions/compare/v1.2.1...v1.3.0) (2025-01-24)
+
+
+### Features
+
+* **github-app-token:** add github-app-token action ([#50](https://github.com/shiron-dev/actions/issues/50)) ([e2e8bee](https://github.com/shiron-dev/actions/commit/e2e8bee506131e969fab0b65273f6dcd47cc84c0))
+* **post-step:** add post-step action ([#48](https://github.com/shiron-dev/actions/issues/48)) ([965bfb3](https://github.com/shiron-dev/actions/commit/965bfb3962198b81dc1bd9bf5b32edb2bde071a1))
+
 ## [1.2.1](https://github.com/shiron-dev/actions/compare/v1.2.0...v1.2.1) (2025-01-22)
 
 
