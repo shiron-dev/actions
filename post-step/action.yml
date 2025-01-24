@@ -1,0 +1,19 @@
+name: Post step
+description: Run a post step after the main step.
+
+inputs:
+  run:
+    description: Run command/script
+    default: echo "Run step"
+  post:
+    description: Post command/script
+    required: true
+  key:
+    description: State post key
+    required: false
+    default: POST
+
+runs:
+  using: node20
+  main: main.js
+  post: main.js
