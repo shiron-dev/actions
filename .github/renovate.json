@@ -20,10 +20,9 @@
   "packageRules": [
     {
       "matchPackageNames": [
-        "pnpm"
+        "pnpm/pnpm"
       ],
-      "semanticCommitType": "fix",
-      "automerge": false
+      "semanticCommitType": "fix"
     }
   ]
 }
