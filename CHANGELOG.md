@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.3.2](https://github.com/shiron-dev/actions/compare/v1.3.1...v1.3.2) (2025-03-10)
+
+
+### Bug Fixes
+
+* **deps:** update dependency pnpm/pnpm to v10.5.2 ([#73](https://github.com/shiron-dev/actions/issues/73)) ([c94f50e](https://github.com/shiron-dev/actions/commit/c94f50ef2e369b69c6f02d47eec942ea48495633))
+* **deps:** update dependency pnpm/pnpm to v10.6.0 ([#82](https://github.com/shiron-dev/actions/issues/82)) ([2fb9926](https://github.com/shiron-dev/actions/commit/2fb9926a801c9657d2c8fa8b7edfaf1b7305f7ea))
+* **deps:** update dependency pnpm/pnpm to v10.6.1 ([#83](https://github.com/shiron-dev/actions/issues/83)) ([f0e7875](https://github.com/shiron-dev/actions/commit/f0e7875f0ea17034e60d492621834ea31844b9fd))
+* **deps:** update dependency typescript to ^5.8.2 ([#76](https://github.com/shiron-dev/actions/issues/76)) ([68d2f60](https://github.com/shiron-dev/actions/commit/68d2f606f702108b71ad941a93b10804e92d50f4))
+
 ## [1.3.1](https://github.com/shiron-dev/actions/compare/v1.3.0...v1.3.1) (2025-03-01)
 
 
