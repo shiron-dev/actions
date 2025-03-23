@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.3.2](https://github.com/shiron-dev/actions/compare/v1.3.1...v1.3.2) (2025-03-23)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @actions/artifact to ^2.3.0 ([#87](https://github.com/shiron-dev/actions/issues/87)) ([adddffc](https://github.com/shiron-dev/actions/commit/adddffca088f367d81953c4302f63fca85e59930))
+* **deps:** update dependency @actions/artifact to ^2.3.1 ([#88](https://github.com/shiron-dev/actions/issues/88)) ([a52b0c8](https://github.com/shiron-dev/actions/commit/a52b0c81aa8f7d61f33b2493518b9a063e60606a))
+* **deps:** update dependency @actions/artifact to ^2.3.2 ([#93](https://github.com/shiron-dev/actions/issues/93)) ([42688fb](https://github.com/shiron-dev/actions/commit/42688fba51bde2ee4c7e0b02d31e0084d1747845))
+* **deps:** update dependency pnpm/pnpm to v10.5.2 ([#73](https://github.com/shiron-dev/actions/issues/73)) ([c94f50e](https://github.com/shiron-dev/actions/commit/c94f50ef2e369b69c6f02d47eec942ea48495633))
+* **deps:** update dependency pnpm/pnpm to v10.6.0 ([#82](https://github.com/shiron-dev/actions/issues/82)) ([2fb9926](https://github.com/shiron-dev/actions/commit/2fb9926a801c9657d2c8fa8b7edfaf1b7305f7ea))
+* **deps:** update dependency pnpm/pnpm to v10.6.1 ([#83](https://github.com/shiron-dev/actions/issues/83)) ([f0e7875](https://github.com/shiron-dev/actions/commit/f0e7875f0ea17034e60d492621834ea31844b9fd))
+* **deps:** update dependency pnpm/pnpm to v10.6.2 ([#86](https://github.com/shiron-dev/actions/issues/86)) ([ab4c446](https://github.com/shiron-dev/actions/commit/ab4c446d832af22d5771eb06d65832e63dd10fb8))
+* **deps:** update dependency pnpm/pnpm to v10.6.3 ([#89](https://github.com/shiron-dev/actions/issues/89)) ([85fe4c2](https://github.com/shiron-dev/actions/commit/85fe4c238ccc9a4c30f41e5622219567c6435d64))
+* **deps:** update dependency pnpm/pnpm to v10.6.4 ([#90](https://github.com/shiron-dev/actions/issues/90)) ([0b13faa](https://github.com/shiron-dev/actions/commit/0b13faad70133dde60817d5d93d5218c5bc3a4dc))
+* **deps:** update dependency pnpm/pnpm to v10.6.5 ([#94](https://github.com/shiron-dev/actions/issues/94)) ([9b57fe4](https://github.com/shiron-dev/actions/commit/9b57fe44fad23a33a4ddc6a377ae70c11f439ea7))
+* **deps:** update dependency typescript to ^5.8.2 ([#76](https://github.com/shiron-dev/actions/issues/76)) ([68d2f60](https://github.com/shiron-dev/actions/commit/68d2f606f702108b71ad941a93b10804e92d50f4))
+
 ## [1.3.1](https://github.com/shiron-dev/actions/compare/v1.3.0...v1.3.1) (2025-03-01)
 
 
