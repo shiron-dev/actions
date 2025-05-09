@@ -6,8 +6,8 @@
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": [
-        "action.yaml"
+      "managerFilePatterns": [
+        "/action.yaml/"
       ],
       "matchStrings": [
         "\"pnpm version\"\\s*default:\\s*\"(?<currentValue>.*)\""
