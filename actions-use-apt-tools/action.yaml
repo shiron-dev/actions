@@ -1,0 +1,123 @@
+name: install-and-cache apt tools
+description: 'GitHub Action to install and cache apt tools'
+author: 'Office TECOLI, LLC'
+branding:
+  color: orange
+  icon: type
+
+inputs:
+  tools: {required: true, type: string}
+  repos: {required: false, type: string}
+  cache: {required: false, type: string, default: yes}
+  key: {required: false, type: string}
+  method: {required: false, type: string, default: package}
+  path:
+    required: false
+    type: string
+    default: >-
+      /etc
+      /usr/bin
+      /usr/sbin
+      /usr/lib
+      /usr/share
+      /var/lib
+
+outputs:
+  cache-hit:
+    value: ${{ steps.cache.outputs.cache-hit }}
+
+runs:
+  using: composite
+  steps:
+
+    - id: setup
+      shell: bash
+      run: |
+        : setup use-apt-tools
+        case "${{ inputs.cache }}" in
+            yes|workflow) cache="${{ inputs.cache }}" ;;
+            *)            cache=no ;;
+        esac
+        action_key="v0.2"
+        given_key="${{ inputs.key }}"
+        method="${{ inputs.method }}"
+        tools="${{ inputs.tools }}"
+        hash=$( (uname -mrsv; echo $method $tools) | (md5sum||md5) | awk '{print $1}' )
+        key="${action_key:+$action_key-}$hash${given_key:+-$given_key}"
+        [ "$cache" == 'workflow' ] && \
+            key+="-${{ github.run_id }}-${{ github.run_attempt }}"
+        sed 's/^ *//' << END >> $GITHUB_OUTPUT
+            cache=$cache
+            archive=$HOME/apt-$hash.tz
+            key=$key
+        END
+
+    - id: cache
+      if: steps.setup.outputs.cache != 'no'
+      uses: actions/cache@v4
+      with:
+        path: ${{ steps.setup.outputs.archive }}
+        key: ${{ steps.setup.outputs.key }}
+
+    - id: extract
+      if: steps.setup.outputs.cache != 'no' && steps.cache.outputs.cache-hit == 'true'
+      shell: bash
+      run: |
+        : extract
+        archive="${{ steps.setup.outputs.archive }}"
+        ls -l $archive
+        [ -f $archive ] && sudo tar -C / -xvzf $archive
+
+    - id: update
+      if: steps.cache.outputs.cache-hit != 'true'
+      shell: bash
+      run: |
+        : update
+        for repo in ${{ inputs.repos }}
+        do
+            sudo add-apt-repository -y $repo
+        done
+        sudo apt-get update
+
+    - id: install-and-archive
+      if: >-
+        inputs.method == 'timestamp' &&
+        steps.setup.outputs.cache != 'no' &&
+        steps.cache.outputs.cache-hit != 'true'
+      uses: tecolicom/actions-install-and-archive@v1
+      with:
+        run: apt-get install -y ${{ inputs.tools }}
+        archive: ${{ steps.setup.outputs.archive }}
+        path: ${{ inputs.path }}
+        sudo: true
+
+    - id: self-install
+      if: >-
+        steps.setup.outputs.cache == 'no' ||
+        (inputs.method == 'package' && steps.cache.outputs.cache-hit != 'true')
+      shell: bash
+      run: |
+        : self install
+        sudo apt-get install -y ${{ inputs.tools }}
+
+    - id: self-archive
+      if: >-
+        steps.setup.outputs.cache != 'no' &&
+        (inputs.method == 'package' && steps.cache.outputs.cache-hit != 'true')
+      shell: bash
+      run: |
+        : archive
+        tools="${{ inputs.tools }}"
+        archive="${{ steps.setup.outputs.archive }}"
+        list=/tmp/dpkg.out
+        dpkg -L $tools | while read f
+        do
+            [ -d "$f" ] && continue
+            if [ -e "$f" ]
+            then echo "$f"
+            else echo "not found: $f" >&2
+            fi
+        done > $list
+        perl -i -pe s:^/:: $list
+        tar -cvzf $archive -C / -T $list
+        ls -l $archive
