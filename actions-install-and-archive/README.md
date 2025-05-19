@@ -22,7 +22,7 @@ to be used from normal workflow.
 #   sudo:    { required: false, type: boolean }
 #   verbose: { required: false, type: boolean, default: false }
 
-- uses: tecolicom/actions-install-and-archive@v1
+- uses: shiron-dev/actions/actions-install-and-archive@v1
   with:
     # install script
     run: ""
@@ -46,7 +46,7 @@ to be used from normal workflow.
 ## Example
 
 ```yaml
-- uses: tecolicom/actions-install-and-archive@v1
+- uses: shiron-dev/actions/actions-install-and-archive@v1
   with:
     run: apt-get install -qq mecab mecab-ipadic-utf8
     archive: /tmp/apt-archive.tz
