@@ -1,0 +1,35 @@
+name: cache test
+
+on:
+  pull_request:
+    paths:
+      - actions-install-and-archive/**
+  workflow_dispatch:
+
+jobs:
+  initial:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./actions-install-and-archive
+        id: action
+        with:
+          run: |
+            apt-get update
+            apt list --installed | grep -i mecab
+            for pkg in mecab mecab-ipadic-utf8 libmecab-dev
+            do
+                apt-get reinstall -qq $pkg
+            done
+          archive: /tmp/apt-archive.tz
+          sudo: true
+          path: >-
+            /etc
+            /usr/bin
+            /usr/sbin
+            /usr/lib
+            /usr/share
+            /var/lib
+      - run: |
+          mecab --version
+          echo 吾輩は猫である | mecab
