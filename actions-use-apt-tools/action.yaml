@@ -84,7 +84,7 @@ runs:
         inputs.method == 'timestamp' &&
         steps.setup.outputs.cache != 'no' &&
         steps.cache.outputs.cache-hit != 'true'
-      uses: shiron-dev/actions/actions-install-and-archive
+      uses: shiron-dev/actions/actions-install-and-archive@018d2dd3d1d6ed2df0456a51988a8b1ecce0714d # v1.4.0
       with:
         run: apt-get install -y ${{ inputs.tools }}
         archive: ${{ steps.setup.outputs.archive }}
