@@ -1,0 +1,61 @@
+name: apt-tools test
+
+on:
+  pull_request:
+    paths:
+      - actions-use-apt-tools/**
+  workflow_dispatch:
+
+jobs:
+  initial:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./actions-use-apt-tools
+        id: action
+        with:
+          cache: workflow
+          tools: bmake
+          method: timestamp
+      - run: (cd actions-use-apt-tools/__test__; . run.sh )
+      - run: test "${{ steps.action.outputs.cache-hit }}" != true
+  cached:
+    needs: initial
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./actions-use-apt-tools
+        id: action
+        with:
+          cache: workflow
+          tools: bmake
+          method: timestamp
+      - run: (cd actions-use-apt-tools/__test__; . run.sh )
+      - run: test "${{ steps.action.outputs.cache-hit }}" == true
+  no-cache:
+    needs: initial
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./actions-use-apt-tools
+        id: action
+        with:
+          cache: no
+          tools: bmake
+          method: timestamp
+      - run: (cd actions-use-apt-tools/__test__; . run.sh )
+      - run: test "${{ steps.action.outputs.cache-hit }}" != true
+  key:
+    needs: initial
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./actions-use-apt-tools
+        id: action
+        with:
+          cache: workflow
+          tools: bmake
+          method: timestamp
+          key: v2
+      - run: (cd actions-use-apt-tools/__test__; . run.sh )
+      - run: test "${{ steps.action.outputs.cache-hit }}" != true
