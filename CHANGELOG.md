@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.4.0](https://github.com/shiron-dev/actions/compare/v1.3.2...v1.4.0) (2025-05-19)
+
+
+### Features
+
+* **action:** add GitHub Action for installing and caching APT tools ([#136](https://github.com/shiron-dev/actions/issues/136)) ([ca83e5b](https://github.com/shiron-dev/actions/commit/ca83e5b2d23fd2be69759fe8ef08509d0a26f113))
+* **action:** add install-and-archive GitHub Action ([#138](https://github.com/shiron-dev/actions/issues/138)) ([080df6e](https://github.com/shiron-dev/actions/commit/080df6e3c260aebe94589184ee8de836787cdc95))
+
+
+### Bug Fixes
+
+* **deps:** update dependency pnpm/pnpm to v10.10.0 ([#121](https://github.com/shiron-dev/actions/issues/121)) ([0e5bb15](https://github.com/shiron-dev/actions/commit/0e5bb15200e7349f05f75cbdf63ca0d2c96f5ecd))
+* **deps:** update dependency pnpm/pnpm to v10.7.0 ([#102](https://github.com/shiron-dev/actions/issues/102)) ([2125258](https://github.com/shiron-dev/actions/commit/2125258d9cd5901b043bc3e7d7e985d210ef63b0))
+* **deps:** update dependency pnpm/pnpm to v10.7.1 ([#107](https://github.com/shiron-dev/actions/issues/107)) ([34ea430](https://github.com/shiron-dev/actions/commit/34ea4303b1a8a5e1579c6d65c7036ba6bb00f6a0))
+* **deps:** update dependency pnpm/pnpm to v10.8.0 ([#112](https://github.com/shiron-dev/actions/issues/112)) ([fa6a24f](https://github.com/shiron-dev/actions/commit/fa6a24f16b9be3af558ec6ff67cff892cd68f079))
+* **deps:** update dependency pnpm/pnpm to v10.8.1 ([#114](https://github.com/shiron-dev/actions/issues/114)) ([821c9d6](https://github.com/shiron-dev/actions/commit/821c9d6835cf3b96090a95c2570b1f2cf643d51e))
+* **deps:** update dependency pnpm/pnpm to v10.9.0 ([#116](https://github.com/shiron-dev/actions/issues/116)) ([8098bce](https://github.com/shiron-dev/actions/commit/8098bce8948f25f76b01f35dc900988d7bfe72b5))
+* **deps:** update dependency typescript to ^5.8.3 ([#111](https://github.com/shiron-dev/actions/issues/111)) ([48640d0](https://github.com/shiron-dev/actions/commit/48640d0d6da6e82acafbe825070c093a911b00ce))
+* **deps:** update dependency yaml to ^2.7.1 ([#105](https://github.com/shiron-dev/actions/issues/105)) ([93184a9](https://github.com/shiron-dev/actions/commit/93184a962a2573eb1f4578c925788d5ed59c7968))
+* **deps:** update dependency yaml to ^2.8.0 ([#135](https://github.com/shiron-dev/actions/issues/135)) ([16825ff](https://github.com/shiron-dev/actions/commit/16825ff56f2ce251c87fab97fef11e16d74e960c))
+
 ## [1.3.2](https://github.com/shiron-dev/actions/compare/v1.3.1...v1.3.2) (2025-03-23)
 
 
