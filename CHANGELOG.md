@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.1](https://github.com/shiron-dev/actions/compare/v1.4.0...v1.4.1) (2025-05-19)
+
+
+### Bug Fixes
+
+* **action:** update action reference to specific commit for install-a… ([#139](https://github.com/shiron-dev/actions/issues/139)) ([e7ee651](https://github.com/shiron-dev/actions/commit/e7ee6518b078b955bfe4643c335a7a54644bbc8c))
+
 ## [1.4.0](https://github.com/shiron-dev/actions/compare/v1.3.2...v1.4.0) (2025-05-19)
 
 
