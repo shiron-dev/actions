@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "@shiron-dev/eslint-config": "2.1.1",
-    "@types/node": "22.15.18",
+    "@types/node": "22.15.19",
     "@vercel/ncc": "0.38.3",
     "eslint": "9.27.0",
     "eslint-plugin-format": "1.0.1",
