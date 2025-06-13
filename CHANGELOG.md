@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.4.2](https://github.com/shiron-dev/actions/compare/v1.4.1...v1.4.2) (2025-06-13)
+
+
+### Bug Fixes
+
+* **deps:** update dependency pnpm/pnpm to v10.11.1 ([#159](https://github.com/shiron-dev/actions/issues/159)) ([b91e2b6](https://github.com/shiron-dev/actions/commit/b91e2b6fc4e872e06478777e6468519ac9a8a84e))
+* **deps:** update dependency pnpm/pnpm to v10.12.1 ([#161](https://github.com/shiron-dev/actions/issues/161)) ([1f7c305](https://github.com/shiron-dev/actions/commit/1f7c3057e35ac70177c9e33169523566c7704c87))
+* **docs:** update action references in README files ([#142](https://github.com/shiron-dev/actions/issues/142)) ([b51aa2b](https://github.com/shiron-dev/actions/commit/b51aa2baf9402482d722eddc6b1c644d5852b643))
+
 ## [1.4.1](https://github.com/shiron-dev/actions/compare/v1.4.0...v1.4.1) (2025-05-19)
 
 
