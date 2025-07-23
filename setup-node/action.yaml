@@ -5,7 +5,7 @@ inputs:
   node-version:
     required: false
     description: "Node.js version"
-    default: "20"
+    default: ""
   pnpm-version:
     required: false
     description: "pnpm version"
@@ -19,10 +19,28 @@ runs:
       with:
         run_install: false
         version: ${{ inputs.pnpm-version }}
+    - name: Detect node version
+      id: detect-node-version
+      shell: bash
+      run: |
+        if [ -z "${{ inputs.node-version }}" ]; then
+          if [ -f .node-version ]; then
+            echo "node_version_file=.node-version" >> $GITHUB_OUTPUT
+          elif [ -f .nvmrc ]; then
+            echo "node_version_file=.nvmrc" >> $GITHUB_OUTPUT
+          else
+            echo "version=latest" >> $GITHUB_OUTPUT
+            echo "node_version_file=" >> $GITHUB_OUTPUT
+          fi
+        else
+          echo "version=${{ inputs.node-version }}" >> $GITHUB_OUTPUT
+          echo "node_version_file=" >> $GITHUB_OUTPUT
+        fi
     - name: Setup node
       uses: actions/setup-node@v4
       with:
-        node-version: ${{ inputs.node-version }}
+        node-version: ${{ steps.detect-node-version.outputs.version }}
+        node-version-file: ${{ steps.detect-node-version.outputs.node_version_file }}
     - name: Get cache path
       id: cache
       shell: bash
