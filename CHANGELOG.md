@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.0](https://github.com/shiron-dev/actions/compare/v1.4.2...v1.5.0) (2025-07-24)
+
+
+### Features
+
+* **setup-node:** auto detect node version file ([#180](https://github.com/shiron-dev/actions/issues/180)) ([eec0a8b](https://github.com/shiron-dev/actions/commit/eec0a8bb01673eebc9feaf1dd16dae67a5e9ceae))
+
 ## [1.4.2](https://github.com/shiron-dev/actions/compare/v1.4.1...v1.4.2) (2025-07-18)
 
 
