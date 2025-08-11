@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.5.1](https://github.com/shiron-dev/actions/compare/v1.5.0...v1.5.1) (2025-08-11)
+
+
+### Bug Fixes
+
+* **deps:** update dependency pnpm/pnpm to v10.14.0 ([#187](https://github.com/shiron-dev/actions/issues/187)) ([aa98f75](https://github.com/shiron-dev/actions/commit/aa98f75b96836a8eb7b4606c0182b5e063d85582))
+* **deps:** update dependency tmp to ^0.2.4 ([#193](https://github.com/shiron-dev/actions/issues/193)) ([907efba](https://github.com/shiron-dev/actions/commit/907efba3bf3e22a2bdcb04332f62d209f081df9a))
+* **deps:** update dependency tmp to ^0.2.5 ([#196](https://github.com/shiron-dev/actions/issues/196)) ([98b28ba](https://github.com/shiron-dev/actions/commit/98b28ba751208200a235290429b7cd1abec1c413))
+* **deps:** update dependency typescript to ^5.9.2 ([#188](https://github.com/shiron-dev/actions/issues/188)) ([5b5c76b](https://github.com/shiron-dev/actions/commit/5b5c76b006138aff8b607644ae14b16607bdd018))
+* **deps:** update dependency yaml to ^2.8.1 ([#191](https://github.com/shiron-dev/actions/issues/191)) ([2b325e9](https://github.com/shiron-dev/actions/commit/2b325e94810a03ab8ff131b69f467ebd14bed6b7))
+
 ## [1.5.0](https://github.com/shiron-dev/actions/compare/v1.4.2...v1.5.0) (2025-07-24)
 
 
