@@ -16,7 +16,7 @@ jobs:
       matrix:
         package: ["package1", "package2"]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: ./matrix-output-write
         with:
           matrix-step-name: ${{ github.job }}
@@ -33,7 +33,7 @@ jobs:
       matrix:
         package: ["package1", "package2"]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: ./matrix-output-read
         id: read
         with:
@@ -51,7 +51,7 @@ jobs:
       matrix:
         key: ["key1", "key2"]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: ./matrix-output-read
         id: read
         with:
@@ -67,7 +67,7 @@ jobs:
         package: ["package1", "package2"]
         key: ["key1", "key2"]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: ./matrix-output-read
         id: read
         with:
@@ -82,7 +82,7 @@ jobs:
     outputs:
       result: "${{ steps.read.outputs.result }}"
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: ./matrix-output-read
         id: read
         with:
@@ -97,7 +97,7 @@ jobs:
     outputs:
       result: "${{ steps.jq.outputs.result }}"
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: ./matrix-output-read
         id: read
         with:
@@ -118,4 +118,4 @@ jobs:
         kv: ${{ fromJSON(needs.read.outputs.result) }}
     name: ${{ matrix.kv.key }}-${{ matrix.kv.value }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
