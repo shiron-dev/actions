@@ -1,5 +1,30 @@
 # Changelog
 
+## [1.5.1](https://github.com/shiron-dev/actions/compare/v1.5.0...v1.5.1) (2025-11-11)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @actions/artifact to v4 ([#237](https://github.com/shiron-dev/actions/issues/237)) ([70d4c18](https://github.com/shiron-dev/actions/commit/70d4c18d9ef680094714e72539bda0cf84ad15a5))
+* **deps:** update dependency pnpm/pnpm to v10.14.0 ([#187](https://github.com/shiron-dev/actions/issues/187)) ([aa98f75](https://github.com/shiron-dev/actions/commit/aa98f75b96836a8eb7b4606c0182b5e063d85582))
+* **deps:** update dependency pnpm/pnpm to v10.15.0 ([#200](https://github.com/shiron-dev/actions/issues/200)) ([b00a1f7](https://github.com/shiron-dev/actions/commit/b00a1f76b55ad65a5077aa1c1956ad18fe0d5f9f))
+* **deps:** update dependency pnpm/pnpm to v10.15.1 ([#204](https://github.com/shiron-dev/actions/issues/204)) ([edb9feb](https://github.com/shiron-dev/actions/commit/edb9feb4b62050e0623d695c5cab7bcaecf7a258))
+* **deps:** update dependency pnpm/pnpm to v10.16.0 ([#209](https://github.com/shiron-dev/actions/issues/209)) ([39aa9b7](https://github.com/shiron-dev/actions/commit/39aa9b7dd963d6a1af96ce5e78fa38d2aaf2534c))
+* **deps:** update dependency pnpm/pnpm to v10.16.1 ([#210](https://github.com/shiron-dev/actions/issues/210)) ([2cbed06](https://github.com/shiron-dev/actions/commit/2cbed065cd35b49362ca084bf85037483e7ad001))
+* **deps:** update dependency pnpm/pnpm to v10.17.0 ([#213](https://github.com/shiron-dev/actions/issues/213)) ([adef9ca](https://github.com/shiron-dev/actions/commit/adef9cad957d23e578f2e052a91d43f2275e3bec))
+* **deps:** update dependency pnpm/pnpm to v10.17.1 ([#218](https://github.com/shiron-dev/actions/issues/218)) ([13c1b63](https://github.com/shiron-dev/actions/commit/13c1b636d4f5b9a13e5e0b1afb62f76c36ffa241))
+* **deps:** update dependency pnpm/pnpm to v10.18.0 ([#223](https://github.com/shiron-dev/actions/issues/223)) ([41a1ac5](https://github.com/shiron-dev/actions/commit/41a1ac5831b96796e11d63464c8ca14a4da8478e))
+* **deps:** update dependency pnpm/pnpm to v10.18.1 ([#225](https://github.com/shiron-dev/actions/issues/225)) ([b1a150d](https://github.com/shiron-dev/actions/commit/b1a150d3b5498483d8b649099c73aee9f08fdf1f))
+* **deps:** update dependency pnpm/pnpm to v10.18.2 ([#228](https://github.com/shiron-dev/actions/issues/228)) ([1bd4586](https://github.com/shiron-dev/actions/commit/1bd45862bbd63242c61d39b223b0d4e2499d628a))
+* **deps:** update dependency pnpm/pnpm to v10.18.3 ([#231](https://github.com/shiron-dev/actions/issues/231)) ([816b79c](https://github.com/shiron-dev/actions/commit/816b79ced4b6dcbab4266e18b538f6dac55259bf))
+* **deps:** update dependency pnpm/pnpm to v10.19.0 ([#235](https://github.com/shiron-dev/actions/issues/235)) ([cfd3adf](https://github.com/shiron-dev/actions/commit/cfd3adf685b0a99cc8dd6512b610e7560284d43f))
+* **deps:** update dependency pnpm/pnpm to v10.20.0 ([#240](https://github.com/shiron-dev/actions/issues/240)) ([3516c1e](https://github.com/shiron-dev/actions/commit/3516c1ed752f64a00d21182c7c134b5a3d933a76))
+* **deps:** update dependency tmp to ^0.2.4 ([#193](https://github.com/shiron-dev/actions/issues/193)) ([907efba](https://github.com/shiron-dev/actions/commit/907efba3bf3e22a2bdcb04332f62d209f081df9a))
+* **deps:** update dependency tmp to ^0.2.5 ([#196](https://github.com/shiron-dev/actions/issues/196)) ([98b28ba](https://github.com/shiron-dev/actions/commit/98b28ba751208200a235290429b7cd1abec1c413))
+* **deps:** update dependency typescript to ^5.9.2 ([#188](https://github.com/shiron-dev/actions/issues/188)) ([5b5c76b](https://github.com/shiron-dev/actions/commit/5b5c76b006138aff8b607644ae14b16607bdd018))
+* **deps:** update dependency typescript to ^5.9.3 ([#222](https://github.com/shiron-dev/actions/issues/222)) ([afadc00](https://github.com/shiron-dev/actions/commit/afadc00a5c9b052003a80b78c616d97b68ebc2e3))
+* **deps:** update dependency yaml to ^2.8.1 ([#191](https://github.com/shiron-dev/actions/issues/191)) ([2b325e9](https://github.com/shiron-dev/actions/commit/2b325e94810a03ab8ff131b69f467ebd14bed6b7))
+
 ## [1.5.0](https://github.com/shiron-dev/actions/compare/v1.4.2...v1.5.0) (2025-07-24)
 
 
