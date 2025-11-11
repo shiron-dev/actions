@@ -18,7 +18,7 @@ jobs:
       release-created: ${{ steps.release.outputs.release_created }}
       pr: ${{ steps.release.outputs.pr }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0
       - name: Release please
@@ -32,7 +32,7 @@ jobs:
     timeout-minutes: 10
     if: ${{ needs.release-please.outputs.pr != '' }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           ref: ${{ fromJson(needs.release-please.outputs.pr).headBranchName }}
       - uses: shiron-dev/actions/setup-node@3478cc44402c5c590ce6732554e621558ac6d6e5 # v1.5.0
