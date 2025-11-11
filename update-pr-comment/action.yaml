@@ -36,7 +36,7 @@ runs:
           echo "skip=false" >> "${GITHUB_OUTPUT}"
         fi
     - name: Set the output
-      uses: actions/github-script@v7
+      uses: actions/github-script@v8
       if: steps.check_user.outputs.skip != 'true'
       with:
         script: |
@@ -76,7 +76,7 @@ runs:
           });
         github-token: ${{ inputs.github_token }}
     - name: Check squash merge settings
-      uses: actions/github-script@v7
+      uses: actions/github-script@v8
       if: steps.check_user.outputs.skip != 'true'
       with:
         script: |
