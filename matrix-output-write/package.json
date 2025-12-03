@@ -18,7 +18,7 @@
     "@actions/core": "^1.11.1",
     "tmp": "^0.2.5",
     "typescript": "^5.9.3",
-    "yaml": "^2.8.1"
+    "yaml": "^2.8.2"
   },
   "devDependencies": {
     "@shiron-dev/eslint-config": "2.1.4",

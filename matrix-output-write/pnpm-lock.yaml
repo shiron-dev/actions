@@ -21,8 +21,8 @@ importers:
         specifier: ^5.9.3
         version: 5.9.3
       yaml:
-        specifier: ^2.8.1
-        version: 2.8.1
+        specifier: ^2.8.2
+        version: 2.8.2
     devDependencies:
       '@shiron-dev/eslint-config':
         specifier: 2.1.4
@@ -184,10 +184,6 @@ packages:
 
   '@babel/helper-string-parser@7.25.9':
     resolution: {integrity: sha512-4A/SCr/2KLd5jrtOMFzaKjVtAei3+2r/NChoBNoZ3EyP/+GlhoaEGoWOZUmFmoITP7zOJyHIMm+DYRd8o3PvHA==}
-    engines: {node: '>=6.9.0'}
-
-  '@babel/helper-validator-identifier@7.25.9':
-    resolution: {integrity: sha512-Ed61U6XJc3CVRfkERJWDz4dJwKe7iLmmJsbOGu9wSloNSFttHV0I8g6UAgb7qnK5ly5bGLPd4oXZlxCdANBOWQ==}
     engines: {node: '>=6.9.0'}
 
   '@babel/helper-validator-identifier@7.28.5':
@@ -2456,8 +2452,8 @@ packages:
     resolution: {integrity: sha512-E/+VitOorXSLiAqtTd7Yqax0/pAS3xaYMP+AUUJGOK1OZG3rhcj9fcJOM5HJ2VrP1FrStVCWr1muTfQCdj4tAA==}
     engines: {node: ^14.17.0 || >=16.0.0}
 
-  yaml@2.8.1:
-    resolution: {integrity: sha512-lcYcMxX2PO9XMGvAJkJ3OsNMw+/7FKes7/hgerGUYWIoWu5j/+YQqcZr5JnPZWzOsEBgMbSbiSTn/dv/69Mkpw==}
+  yaml@2.8.2:
+    resolution: {integrity: sha512-mplynKqc1C2hTVYxd0PU2xQAc22TI1vShAYGksCCfxbn/dFwnHTNi1bvYsBTkhdUNtGIf5xNOg938rrSSYvS9A==}
     engines: {node: '>= 14.6'}
     hasBin: true
 
@@ -2693,8 +2689,6 @@ snapshots:
 
   '@babel/helper-string-parser@7.25.9': {}
 
-  '@babel/helper-validator-identifier@7.25.9': {}
-
   '@babel/helper-validator-identifier@7.28.5': {}
 
   '@babel/parser@7.26.3':
@@ -2704,7 +2698,7 @@ snapshots:
   '@babel/types@7.26.3':
     dependencies:
       '@babel/helper-string-parser': 7.25.9
-      '@babel/helper-validator-identifier': 7.25.9
+      '@babel/helper-validator-identifier': 7.28.5
 
   '@clack/core@0.5.0':
     dependencies:
@@ -3944,7 +3938,7 @@ snapshots:
 
   estree-walker@3.0.3:
     dependencies:
-      '@types/estree': 1.0.6
+      '@types/estree': 1.0.8
     optional: true
 
   esutils@2.0.3: {}
@@ -4699,7 +4693,7 @@ snapshots:
 
   pnpm-workspace-yaml@1.3.0:
     dependencies:
-      yaml: 2.8.1
+      yaml: 2.8.2
 
   postcss-selector-parser@6.1.2:
     dependencies:
@@ -5044,7 +5038,7 @@ snapshots:
   vite-node@2.1.8(@types/node@24.10.1):
     dependencies:
       cac: 6.7.14
-      debug: 4.4.0
+      debug: 4.4.3
       es-module-lexer: 1.6.0
       pathe: 1.1.2
       vite: 5.4.11(@types/node@24.10.1)
@@ -5080,7 +5074,7 @@ snapshots:
       '@vitest/spy': 2.1.8
       '@vitest/utils': 2.1.8
       chai: 5.1.2
-      debug: 4.4.0
+      debug: 4.4.3
       expect-type: 1.1.0
       magic-string: 0.30.17
       pathe: 1.1.2
@@ -5167,9 +5161,9 @@ snapshots:
   yaml-eslint-parser@1.3.0:
     dependencies:
       eslint-visitor-keys: 3.4.3
-      yaml: 2.8.1
+      yaml: 2.8.2
 
-  yaml@2.8.1: {}
+  yaml@2.8.2: {}
 
   yocto-queue@0.1.0: {}
 
