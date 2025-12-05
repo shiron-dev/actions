@@ -10,7 +10,7 @@ jobs:
   initial:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - uses: ./actions-use-apt-tools
         id: action
         with:
@@ -23,7 +23,7 @@ jobs:
     needs: initial
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - uses: ./actions-use-apt-tools
         id: action
         with:
@@ -36,7 +36,7 @@ jobs:
     needs: initial
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - uses: ./actions-use-apt-tools
         id: action
         with:
@@ -49,7 +49,7 @@ jobs:
     needs: initial
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - uses: ./actions-use-apt-tools
         id: action
         with:
