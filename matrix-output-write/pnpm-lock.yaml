@@ -26,7 +26,7 @@ importers:
     devDependencies:
       '@shiron-dev/eslint-config':
         specifier: 2.1.4
-        version: 2.1.4(@vue/compiler-sfc@3.5.13)(eslint-plugin-format@1.3.0(eslint@9.39.2))(eslint@9.39.2)(typescript@5.9.3)(vitest@2.1.8(@types/node@24.10.8))
+        version: 2.1.4(@vue/compiler-sfc@3.5.13)(eslint-plugin-format@1.3.1(eslint@9.39.2))(eslint@9.39.2)(typescript@5.9.3)(vitest@2.1.8(@types/node@24.10.8))
       '@types/node':
         specifier: 24.10.8
         version: 24.10.8
@@ -37,8 +37,8 @@ importers:
         specifier: 9.39.2
         version: 9.39.2
       eslint-plugin-format:
-        specifier: 1.3.0
-        version: 1.3.0(eslint@9.39.2)
+        specifier: 1.3.1
+        version: 1.3.1(eslint@9.39.2)
       npm-run-all2:
         specifier: 8.0.4
         version: 8.0.4
@@ -1205,8 +1205,8 @@ packages:
     peerDependencies:
       eslint: '>=8'
 
-  eslint-plugin-format@1.3.0:
-    resolution: {integrity: sha512-CDbN5WLFA83hoLbRAyGe4m2vV5HI2RD9CJTtjkDUSiRf+4oTJAQt7ZhYelrj8X1MIjwBhOas8eTZ7zVZYAXwDw==}
+  eslint-plugin-format@1.3.1:
+    resolution: {integrity: sha512-nK96Gnt6/9wj8KhTFg+D80Mc01cffrcB15NO6pkTJmPpO0vHV+9yxegr+wVry4O3uGbu83HN86inCO3IsML9Rw==}
     peerDependencies:
       eslint: ^8.40.0 || ^9.0.0
 
@@ -1890,6 +1890,9 @@ packages:
   object-deep-merge@2.0.0:
     resolution: {integrity: sha512-3DC3UMpeffLTHiuXSy/UG4NOIYTLlY9u3V82+djSCLYClWobZiS4ivYzpIUWrRY/nfsJ8cWsKyG3QfyLePmhvg==}
 
+  ohash@2.0.11:
+    resolution: {integrity: sha512-RdR9FQrFwNBNXAr4GixM8YaRZRJ5PUWbKYbE5eOsrwAjJW0q2REGcf79oYPsLyskQCZG1PLN+S/K1V00joZAoQ==}
+
   once@1.4.0:
     resolution: {integrity: sha512-lNaJgI+2Q5URQBkccEKHTQOPaXdUxnZZElQTZY0MFUAuaEqe1E+Nyvgdz/aIyNi6Z9MzO5dv1H8n58/GELp3+w==}
 
@@ -2503,7 +2506,7 @@ snapshots:
 
   '@actions/io@1.1.3': {}
 
-  '@antfu/eslint-config@6.2.0(@vue/compiler-sfc@3.5.13)(eslint-plugin-format@1.3.0(eslint@9.39.2))(eslint@9.39.2)(typescript@5.9.3)(vitest@2.1.8(@types/node@24.10.8))':
+  '@antfu/eslint-config@6.2.0(@vue/compiler-sfc@3.5.13)(eslint-plugin-format@1.3.1(eslint@9.39.2))(eslint@9.39.2)(typescript@5.9.3)(vitest@2.1.8(@types/node@24.10.8))':
     dependencies:
       '@antfu/install-pkg': 1.1.0
       '@clack/prompts': 0.11.0
@@ -2543,7 +2546,7 @@ snapshots:
       vue-eslint-parser: 10.2.0(eslint@9.39.2)
       yaml-eslint-parser: 1.3.0
     optionalDependencies:
-      eslint-plugin-format: 1.3.0(eslint@9.39.2)
+      eslint-plugin-format: 1.3.1(eslint@9.39.2)
     transitivePeerDependencies:
       - '@eslint/json'
       - '@vue/compiler-sfc'
@@ -3059,9 +3062,9 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.30.1':
     optional: true
 
-  '@shiron-dev/eslint-config@2.1.4(@vue/compiler-sfc@3.5.13)(eslint-plugin-format@1.3.0(eslint@9.39.2))(eslint@9.39.2)(typescript@5.9.3)(vitest@2.1.8(@types/node@24.10.8))':
+  '@shiron-dev/eslint-config@2.1.4(@vue/compiler-sfc@3.5.13)(eslint-plugin-format@1.3.1(eslint@9.39.2))(eslint@9.39.2)(typescript@5.9.3)(vitest@2.1.8(@types/node@24.10.8))':
     dependencies:
-      '@antfu/eslint-config': 6.2.0(@vue/compiler-sfc@3.5.13)(eslint-plugin-format@1.3.0(eslint@9.39.2))(eslint@9.39.2)(typescript@5.9.3)(vitest@2.1.8(@types/node@24.10.8))
+      '@antfu/eslint-config': 6.2.0(@vue/compiler-sfc@3.5.13)(eslint-plugin-format@1.3.1(eslint@9.39.2))(eslint@9.39.2)(typescript@5.9.3)(vitest@2.1.8(@types/node@24.10.8))
     transitivePeerDependencies:
       - '@eslint-react/eslint-plugin'
       - '@eslint/json'
@@ -3677,7 +3680,7 @@ snapshots:
       eslint: 9.39.2
       eslint-compat-utils: 0.5.1(eslint@9.39.2)
 
-  eslint-plugin-format@1.3.0(eslint@9.39.2):
+  eslint-plugin-format@1.3.1(eslint@9.39.2):
     dependencies:
       '@dprint/formatter': 0.5.1
       '@dprint/markdown': 0.20.0
@@ -3685,6 +3688,7 @@ snapshots:
       eslint: 9.39.2
       eslint-formatting-reporter: 0.0.0(eslint@9.39.2)
       eslint-parser-plain: 0.1.1
+      ohash: 2.0.11
       prettier: 3.7.4
       synckit: 0.11.11
 
@@ -4596,6 +4600,8 @@ snapshots:
       boolbase: 1.0.0
 
   object-deep-merge@2.0.0: {}
+
+  ohash@2.0.11: {}
 
   once@1.4.0:
     dependencies:
