@@ -26,15 +26,8 @@ runs:
       id: renovate-dry-run
       run: |
         set +e
-        RENOVATE_LOG=$(pnpx renovate --dry-run=full --require-config=ignored --platform=local)
-        EXIT_CODE=$?
-        echo "$RENOVATE_LOG"
-        EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
-        {
-          echo "log<<$EOF"
-          echo "$RENOVATE_LOG"
-          echo "$EOF"
-        } >> "$GITHUB_OUTPUT"
+        pnpx renovate --dry-run=full --require-config=ignored --platform=local | tee /tmp/renovate-pr.log
+        EXIT_CODE=${PIPESTATUS[0]}
         exit $EXIT_CODE
       shell: bash
       env:
@@ -45,11 +38,8 @@ runs:
 
     - name: Check deps
       id: check-deps
-      env:
-        RENOVATE_DRY_RUN_LOG: ${{ steps.renovate-dry-run.outputs.log }}
       run: |
-        DEP_OUT=$( printf '%s\n' "$RENOVATE_DRY_RUN_LOG" \
-          | jq --raw-output '
+        DEP_OUT=$(jq --raw-output '
             select(.msg == "packageFiles with updates") |
             .config |
             to_entries |
@@ -69,7 +59,7 @@ runs:
                 })
               })
             })
-          ' )
+          ' /tmp/renovate-pr.log)
         EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
         {
           echo "comment<<$EOF"
@@ -103,14 +93,9 @@ runs:
       id: renovate-dry-run-main
       run: |
         set +e
-        RENOVATE_LOG=$(pnpx renovate --dry-run=full --require-config=ignored --platform=local)
-        echo "$RENOVATE_LOG"
-        EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
-        {
-          echo "log<<$EOF"
-          echo "$RENOVATE_LOG"
-          echo "$EOF"
-        } >> "$GITHUB_OUTPUT"
+        pnpx renovate --dry-run=full --require-config=ignored --platform=local | tee /tmp/renovate-base.log
+        EXIT_CODE=${PIPESTATUS[0]}
+        exit $EXIT_CODE
       shell: bash
       env:
         LOG_LEVEL: debug
@@ -119,11 +104,8 @@ runs:
         RENOVATE_CONFIG_FILE: ${{ inputs.config-file }}
 
     - name: Check deps (base)
-      env:
-        RENOVATE_DRY_RUN_BASE_LOG: ${{ steps.renovate-dry-run-main.outputs.log }}
       run: |
-        DEP_OUT=$( printf '%s\n' "$RENOVATE_DRY_RUN_BASE_LOG" \
-          | jq --raw-output '
+        DEP_OUT=$(jq --raw-output '
             select(.msg == "packageFiles with updates") |
             .config |
             to_entries |
@@ -143,7 +125,7 @@ runs:
                 })
               })
             })
-          ' )
+          ' /tmp/renovate-base.log)
         echo "$DEP_OUT" | jq -r '
           .[] | .key as $mgr |
           .files[] | .packageFile as $file |
