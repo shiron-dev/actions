@@ -24,7 +24,7 @@
     "@shiron-dev/eslint-config": "2.1.4",
     "@types/node": "24.10.13",
     "@vercel/ncc": "0.38.4",
-    "eslint": "9.39.2",
+    "eslint": "10.0.0",
     "eslint-plugin-format": "1.4.0",
     "npm-run-all2": "8.0.4"
   }
