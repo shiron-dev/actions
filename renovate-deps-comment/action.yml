@@ -1,0 +1,195 @@
+name: Renovate deps comment
+description: Run Renovate dry-run on PR and main, diff deps, and post a sticky PR comment
+
+inputs:
+  base-branch:
+    description: "Branch to compare against (default main)"
+    default: main
+  config-file:
+    description: "Renovate config file name"
+    default: .github/renovate.json
+  head-ref:
+    description: "PR branch name for Renovate base (default github.head_ref)"
+    required: false
+  pr-number:
+    description: "Pull request number for the comment (default github.event.pull_request.number)"
+    required: false
+
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/checkout@v6
+    - uses: shiron-dev/actions/setup-node@9e2029b6bf55740748a5eace94dc93d97a1496ba # v1.5.2
+    - name: Dry-run Renovate
+      id: renovate-dry-run
+      run: |
+        set +e
+        RENOVATE_LOG=$(pnpx renovate --dry-run=full --require-config=ignored --platform=local)
+        EXIT_CODE=$?
+        echo "$RENOVATE_LOG"
+        EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+        {
+          echo "log<<$EOF"
+          echo "$RENOVATE_LOG"
+          echo "$EOF"
+        } >> "$GITHUB_OUTPUT"
+        exit $EXIT_CODE
+      shell: bash
+      env:
+        LOG_LEVEL: debug
+        LOG_FORMAT: json
+        RENOVATE_BASE_BRANCHES: ${{ inputs.head-ref || github.head_ref }}
+        RENOVATE_CONFIG_FILE: ${{ inputs.config-file }}
+
+    - name: Check deps
+      id: check-deps
+      run: |
+        DEP_OUT=$( echo '${{ steps.renovate-dry-run.outputs.log }}'\
+          | jq --raw-output '
+            select(.msg == "packageFiles with updates") |
+            .config |
+            to_entries |
+            group_by(.key) |
+            map({
+              key: .[0].key,
+              files: map(.value) | flatten
+            }) |
+            map({
+              key,
+              files: .files | map({
+                packageFile,
+                deps: .deps | map({
+                  depName,
+                  currentValue,
+                  currentDigest
+                })
+              })
+            })
+          ' )
+        EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+        {
+          echo "comment<<$EOF"
+          echo "$DEP_OUT" | jq -r '
+            .[] |
+            "<details><summary>\(.key)</summary><blockquote>\n" +
+            (.files | map(
+              "<details><summary>\(.packageFile)</summary>\n\n" +
+              (.deps | map(if .currentDigest then " - `\(.depName) \(.currentValue)@\(.currentDigest)`" else " - `\(.depName) \(.currentValue)`" end) | join("\n")) +
+              "\n</details>"
+            ) | join("\n\n") ) +
+            "\n</blockquote></details>"
+            '
+          echo "$EOF"
+        } >> "$GITHUB_OUTPUT"
+        echo "$DEP_OUT" | jq -r '
+          .[] | .key as $mgr |
+          .files[] | .packageFile as $file |
+          .deps[] |
+          if .currentDigest then "\($mgr) \($file) \(.depName) \(.currentValue)@\(.currentDigest)"
+          else "\($mgr) \($file) \(.depName) \(.currentValue)"
+          end
+        ' | sort > /tmp/pr-deps.txt
+      shell: bash
+
+    - uses: actions/checkout@v6
+      with:
+        ref: ${{ inputs.base-branch }}
+
+    - name: Dry-run Renovate (base)
+      id: renovate-dry-run-main
+      run: |
+        set +e
+        RENOVATE_LOG=$(pnpx renovate --dry-run=full --require-config=ignored --platform=local)
+        echo "$RENOVATE_LOG"
+        EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+        {
+          echo "log<<$EOF"
+          echo "$RENOVATE_LOG"
+          echo "$EOF"
+        } >> "$GITHUB_OUTPUT"
+      shell: bash
+      env:
+        LOG_LEVEL: debug
+        LOG_FORMAT: json
+        RENOVATE_BASE_BRANCHES: ${{ inputs.base-branch }}
+        RENOVATE_CONFIG_FILE: ${{ inputs.config-file }}
+
+    - name: Check deps (base)
+      run: |
+        DEP_OUT=$( echo '${{ steps.renovate-dry-run-main.outputs.log }}'\
+          | jq --raw-output '
+            select(.msg == "packageFiles with updates") |
+            .config |
+            to_entries |
+            group_by(.key) |
+            map({
+              key: .[0].key,
+              files: map(.value) | flatten
+            }) |
+            map({
+              key,
+              files: .files | map({
+                packageFile,
+                deps: .deps | map({
+                  depName,
+                  currentValue,
+                  currentDigest
+                })
+              })
+            })
+          ' )
+        echo "$DEP_OUT" | jq -r '
+          .[] | .key as $mgr |
+          .files[] | .packageFile as $file |
+          .deps[] |
+          if .currentDigest then "\($mgr) \($file) \(.depName) \(.currentValue)@\(.currentDigest)"
+          else "\($mgr) \($file) \(.depName) \(.currentValue)"
+          end
+        ' | sort > /tmp/main-deps.txt
+      shell: bash
+
+    - name: Generate diff
+      id: deps-diff
+      run: |
+        set +e
+        DIFF=$(diff -u --label ${{ inputs.base-branch }} --label pr /tmp/main-deps.txt /tmp/pr-deps.txt)
+        set -e
+        if [ -n "$DIFF" ]; then
+          EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+          {
+            echo "diff<<$EOF"
+            echo "$DIFF"
+            echo "$EOF"
+          } >> "$GITHUB_OUTPUT"
+        fi
+      shell: bash
+
+    - name: Build comment
+      id: build-comment
+      env:
+        DEPS_COMMENT: ${{ steps.check-deps.outputs.comment }}
+        DEPS_DIFF: ${{ steps.deps-diff.outputs.diff }}
+      run: |
+        EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+        {
+          echo "message<<$EOF"
+          echo "## Renovate dry-run detected dependencies"
+          echo "$DEPS_COMMENT"
+          if [ -n "$DEPS_DIFF" ]; then
+            echo ""
+            echo "## Diff from ${{ inputs.base-branch }}"
+            echo '```diff'
+            echo "$DEPS_DIFF"
+            echo '```'
+          fi
+          echo "$EOF"
+        } >> "$GITHUB_OUTPUT"
+      shell: bash
+
+    - name: Post comment
+      if: ${{ steps.check-deps.outputs.comment != '' }}
+      uses: marocchino/sticky-pull-request-comment@v2
+      with:
+        number: ${{ inputs.pr-number || github.event.pull_request.number }}
+        header: deps-check
+        message: ${{ steps.build-comment.outputs.message }}
