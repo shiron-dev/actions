@@ -45,8 +45,10 @@ runs:
 
     - name: Check deps
       id: check-deps
+      env:
+        RENOVATE_DRY_RUN_LOG: ${{ steps.renovate-dry-run.outputs.log }}
       run: |
-        DEP_OUT=$( echo '${{ steps.renovate-dry-run.outputs.log }}'\
+        DEP_OUT=$( printf '%s\n' "$RENOVATE_DRY_RUN_LOG" \
           | jq --raw-output '
             select(.msg == "packageFiles with updates") |
             .config |
@@ -117,8 +119,10 @@ runs:
         RENOVATE_CONFIG_FILE: ${{ inputs.config-file }}
 
     - name: Check deps (base)
+      env:
+        RENOVATE_DRY_RUN_BASE_LOG: ${{ steps.renovate-dry-run-main.outputs.log }}
       run: |
-        DEP_OUT=$( echo '${{ steps.renovate-dry-run-main.outputs.log }}'\
+        DEP_OUT=$( printf '%s\n' "$RENOVATE_DRY_RUN_BASE_LOG" \
           | jq --raw-output '
             select(.msg == "packageFiles with updates") |
             .config |
