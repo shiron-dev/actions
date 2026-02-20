@@ -181,3 +181,5 @@ runs:
         number: ${{ inputs.pr-number || github.event.pull_request.number }}
         header: deps-check
         message: ${{ steps.build-comment.outputs.message }}
+
+    - uses: actions/checkout@v6

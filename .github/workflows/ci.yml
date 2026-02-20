@@ -124,4 +124,3 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - uses: ./renovate-deps-comment
-      - uses: actions/checkout@v6
