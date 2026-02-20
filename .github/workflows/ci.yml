@@ -17,6 +17,7 @@ jobs:
       - matrix-output-write-test
       - post-step-check
       - github-app-token-check
+      - renovate-deps-comment
     steps:
       - name: All status check
         run: echo "All status check passed"
@@ -117,3 +118,9 @@ jobs:
         run: |
           echo "GITHUB_APP_TOKEN=${{ steps.github-app-token.outputs.token }}" >> "${GITHUB_ENV}"
           GITHUB_TOKEN="${{ steps.github-app-token.outputs.token }}" gh pr status
+  renovate-deps-comment:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ./renovate-deps-comment
