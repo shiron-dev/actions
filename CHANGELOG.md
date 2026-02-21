@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.1](https://github.com/shiron-dev/actions/compare/v1.6.0...v1.6.1) (2026-02-21)
+
+
+### Bug Fixes
+
+* **renovate-deps-comment:** update conditions for posting comments in renovate-deps-comment action ([#298](https://github.com/shiron-dev/actions/issues/298)) ([d24c750](https://github.com/shiron-dev/actions/commit/d24c750664c8a0d2f87bc033f8fea7813c572590))
+
 ## [1.6.0](https://github.com/shiron-dev/actions/compare/v1.5.2...v1.6.0) (2026-02-20)
 
 
