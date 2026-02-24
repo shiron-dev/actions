@@ -35,7 +35,7 @@ jobs:
       - uses: actions/checkout@v6
         with:
           ref: ${{ fromJson(needs.release-please.outputs.pr).headBranchName }}
-      - uses: shiron-dev/actions/setup-node@07414f04b70ca17f5736f93feec90cc20905e009 # v1.6.0
+      - uses: shiron-dev/actions/setup-node@610bf954da62f20b3633814bff378a972048033e # v1.6.1
       - name: Run install
         working-directory: ./matrix-output-write
         run: |
