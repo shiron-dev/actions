@@ -19,7 +19,7 @@ runs:
   using: "composite"
   steps:
     - uses: actions/checkout@v6
-    - uses: shiron-dev/actions/setup-node@610bf954da62f20b3633814bff378a972048033e # v1.6.1
+    - uses: shiron-dev/actions/setup-node@d898596addf114b0b4a4cd9a984775410e248e10 # v1.6.2
       with:
         node-version: "24.11.0"
     - name: Dry-run Renovate
