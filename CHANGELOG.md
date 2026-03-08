@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.3](https://github.com/shiron-dev/actions/compare/v1.6.2...v1.6.3) (2026-03-08)
+
+
+### Bug Fixes
+
+* **deps:** update dependency pnpm/pnpm to v10.30.3 ([#313](https://github.com/shiron-dev/actions/issues/313)) ([974ddcb](https://github.com/shiron-dev/actions/commit/974ddcb49f89b752983f705146fc10fa5f07e556))
+
 ## [1.6.2](https://github.com/shiron-dev/actions/compare/v1.6.1...v1.6.2) (2026-03-01)
 
 
