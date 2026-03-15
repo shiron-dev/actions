@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.6.4](https://github.com/shiron-dev/actions/compare/v1.6.3...v1.6.4) (2026-03-15)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @actions/artifact to ^6.2.1 ([#326](https://github.com/shiron-dev/actions/issues/326)) ([40e3e1f](https://github.com/shiron-dev/actions/commit/40e3e1f9a5849b44a6653a583546a4a34df4e5af))
+* **deps:** update dependency pnpm/pnpm to v10.32.0 ([#322](https://github.com/shiron-dev/actions/issues/322)) ([e655349](https://github.com/shiron-dev/actions/commit/e6553491911e2fe7fefbb135f7c281b2e8a38f0e))
+* **deps:** update dependency pnpm/pnpm to v10.32.1 ([#325](https://github.com/shiron-dev/actions/issues/325)) ([1dc76bc](https://github.com/shiron-dev/actions/commit/1dc76bc7614fc6bf436ec9075c1518b66eb7f1b4))
+
 ## [1.6.3](https://github.com/shiron-dev/actions/compare/v1.6.2...v1.6.3) (2026-03-11)
 
 
