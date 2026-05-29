@@ -15,7 +15,7 @@ importers:
         specifier: ^3.0.1
         version: 3.0.1
       tmp:
-        specifier: ^0.2.5
+        specifier: ^0.2.6
         version: 0.2.6
       typescript:
         specifier: ^5.9.3
