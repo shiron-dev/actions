@@ -15,8 +15,8 @@ importers:
         specifier: ^3.0.1
         version: 3.0.1
       tmp:
-        specifier: ^0.2.6
-        version: 0.2.6
+        specifier: ^0.2.7
+        version: 0.2.7
       typescript:
         specifier: ^5.9.3
         version: 5.9.3
@@ -1934,8 +1934,8 @@ packages:
     resolution: {integrity: sha512-Pugqs6M0m7Lv1I7FtxN4aoyToKg1C4tu+/381vH35y8oENM/Ai7f7C4StcoK4/+BSw9ebcS8jRiVrORFKCALLw==}
     engines: {node: ^20.0.0 || >=22.0.0}
 
-  tmp@0.2.6:
-    resolution: {integrity: sha512-5sJPdPjfI5Kx+qbrDesxkglRBxW//g7hCsqspEjwkewGvBMGIKMOTKzLt1hFVJzyadba3lDUN20O9qhvbQUSTA==}
+  tmp@0.2.7:
+    resolution: {integrity: sha512-e0votIpp4Uo2AJYSzVHV6xCcawuiez3DzqDAbrTc3YxBkplN6e+dM13ZeIcZnDg/QpSuU2zfZ3rzwY8ukEnaXw==}
     engines: {node: '>=14.14'}
 
   to-valid-identifier@1.0.0:
@@ -4282,7 +4282,7 @@ snapshots:
 
   tinypool@2.1.0: {}
 
-  tmp@0.2.6: {}
+  tmp@0.2.7: {}
 
   to-valid-identifier@1.0.0:
     dependencies:
