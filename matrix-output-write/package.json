@@ -16,7 +16,7 @@
   "dependencies": {
     "@actions/artifact": "^6.2.1",
     "@actions/core": "^3.0.1",
-    "tmp": "^0.2.6",
+    "tmp": "^0.2.7",
     "typescript": "^5.9.3",
     "yaml": "^2.9.0"
   },
