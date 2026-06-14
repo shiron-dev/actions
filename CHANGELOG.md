@@ -1,5 +1,29 @@
 # Changelog
 
+## [1.6.4](https://github.com/shiron-dev/actions/compare/v1.6.3...v1.6.4) (2026-06-14)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @actions/artifact to ^6.2.1 ([#326](https://github.com/shiron-dev/actions/issues/326)) ([40e3e1f](https://github.com/shiron-dev/actions/commit/40e3e1f9a5849b44a6653a583546a4a34df4e5af))
+* **deps:** update dependency @actions/core to ^3.0.1 ([#355](https://github.com/shiron-dev/actions/issues/355)) ([e4b16b5](https://github.com/shiron-dev/actions/commit/e4b16b5366ff85125a4164ebea80857221acabcd))
+* **deps:** update dependency pnpm/pnpm to v10.32.0 ([#322](https://github.com/shiron-dev/actions/issues/322)) ([e655349](https://github.com/shiron-dev/actions/commit/e6553491911e2fe7fefbb135f7c281b2e8a38f0e))
+* **deps:** update dependency pnpm/pnpm to v10.32.1 ([#325](https://github.com/shiron-dev/actions/issues/325)) ([1dc76bc](https://github.com/shiron-dev/actions/commit/1dc76bc7614fc6bf436ec9075c1518b66eb7f1b4))
+* **deps:** update dependency pnpm/pnpm to v10.33.0 ([#341](https://github.com/shiron-dev/actions/issues/341)) ([9abf3d0](https://github.com/shiron-dev/actions/commit/9abf3d01d6eda8cd50e27baec7775dd7ce8bf8f1))
+* **deps:** update dependency pnpm/pnpm to v10.33.1 ([#356](https://github.com/shiron-dev/actions/issues/356)) ([2918a09](https://github.com/shiron-dev/actions/commit/2918a09fb3c5e29c2449d28d31af3ecc80acd7ca))
+* **deps:** update dependency pnpm/pnpm to v10.33.2 ([#358](https://github.com/shiron-dev/actions/issues/358)) ([0d710ad](https://github.com/shiron-dev/actions/commit/0d710ad480f4a2fc1d1ab37f496507200b9eaa60))
+* **deps:** update dependency pnpm/pnpm to v10.33.3 ([#364](https://github.com/shiron-dev/actions/issues/364)) ([b5a5ed0](https://github.com/shiron-dev/actions/commit/b5a5ed04bb752bd4267d585a11a0a2e133a86cbb))
+* **deps:** update dependency pnpm/pnpm to v10.33.4 ([#366](https://github.com/shiron-dev/actions/issues/366)) ([601a73d](https://github.com/shiron-dev/actions/commit/601a73d0347f1b58063e9325a57aca9a981179d4))
+* **deps:** update dependency pnpm/pnpm to v10.34.0 ([#378](https://github.com/shiron-dev/actions/issues/378)) ([73ace74](https://github.com/shiron-dev/actions/commit/73ace7486acd5ac2a8276eb5889f5a8a0896c60e))
+* **deps:** update dependency pnpm/pnpm to v10.34.1 ([#379](https://github.com/shiron-dev/actions/issues/379)) ([7409008](https://github.com/shiron-dev/actions/commit/74090081cac886f006c67306ea18c26087757dd4))
+* **deps:** update dependency pnpm/pnpm to v10.34.2 ([#387](https://github.com/shiron-dev/actions/issues/387)) ([69e5f1e](https://github.com/shiron-dev/actions/commit/69e5f1e156c0a0847c6d82e43401ea194fd1a393))
+* **deps:** update dependency pnpm/pnpm to v10.34.3 ([#390](https://github.com/shiron-dev/actions/issues/390)) ([3955d5d](https://github.com/shiron-dev/actions/commit/3955d5d4d5f31961d84296b652ca70cb63725377))
+* **deps:** update dependency tmp to ^0.2.6 ([#376](https://github.com/shiron-dev/actions/issues/376)) ([4eff60f](https://github.com/shiron-dev/actions/commit/4eff60f3c0547814f330f7418136edc4a1a33fd3))
+* **deps:** update dependency tmp to ^0.2.7 ([#377](https://github.com/shiron-dev/actions/issues/377)) ([996407a](https://github.com/shiron-dev/actions/commit/996407ad4e06ff71c5ec7eef5eda25491edb9c0e))
+* **deps:** update dependency yaml to ^2.8.3 ([#337](https://github.com/shiron-dev/actions/issues/337)) ([8d46ab6](https://github.com/shiron-dev/actions/commit/8d46ab6361eb6660c74021da617e587933b9f089))
+* **deps:** update dependency yaml to ^2.8.4 ([#363](https://github.com/shiron-dev/actions/issues/363)) ([caade8a](https://github.com/shiron-dev/actions/commit/caade8a30b7bc3e8b1ee4a46314bacaad9205bec))
+* **deps:** update dependency yaml to ^2.9.0 ([#369](https://github.com/shiron-dev/actions/issues/369)) ([0682f5b](https://github.com/shiron-dev/actions/commit/0682f5bc68573bbd16a2305e1428e14e784da157))
+
 ## [1.6.3](https://github.com/shiron-dev/actions/compare/v1.6.2...v1.6.3) (2026-03-11)
 
 
