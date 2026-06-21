@@ -20,7 +20,7 @@ jobs:
       tag-name: ${{ steps.release.outputs.tag_name }}
       sha: ${{ steps.release.outputs.sha }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
         with:
           fetch-depth: 0
       - name: Release please
@@ -34,7 +34,7 @@ jobs:
     timeout-minutes: 10
     if: ${{ needs.release-please.outputs.pr != '' }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
         with:
           ref: ${{ fromJson(needs.release-please.outputs.pr).headBranchName }}
       - uses: shiron-dev/actions/setup-node@84397408739dd8be5cab53d443ae764501063dab # v1.6.4
@@ -64,7 +64,7 @@ jobs:
     timeout-minutes: 10
     if: ${{ needs.release-please.outputs.release-created }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
       - name: Bump self references to the released digest
         env:
           # SHA of the commit that was just released (= the release tag commit).
