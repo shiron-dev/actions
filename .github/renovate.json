@@ -12,7 +12,6 @@
       "matchStrings": [
         "description: \"pnpm version\"[\\s\\S]*?default: \"(?<currentValue>[^\"]+)\""
       ],
-      "multilineMatching": true,
       "datasourceTemplate": "github-releases",
       "depNameTemplate": "pnpm/pnpm",
       "extractVersionTemplate": "v(?<version>.*)"
