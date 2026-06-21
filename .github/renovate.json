@@ -24,6 +24,13 @@
         "pnpm/pnpm"
       ],
       "semanticCommitType": "fix"
+    },
+    {
+      "description": "Self references are bumped by the release workflow, not Renovate, to avoid a circular dependency.",
+      "matchPackageNames": [
+        "shiron-dev/actions"
+      ],
+      "enabled": false
     }
   ],
   "pinDigests": true
