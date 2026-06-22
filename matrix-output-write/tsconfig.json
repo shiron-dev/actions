@@ -2,8 +2,11 @@
   "compilerOptions": {
     "target": "es2020",
     "lib": ["ESNext"],
+    "rootDir": "src",
     "module": "es2022",
     "moduleResolution": "node",
+    "ignoreDeprecations": "6.0",
+    "types": ["node"],
     "allowJs": true,
     "strict": true,
     "declaration": true,
