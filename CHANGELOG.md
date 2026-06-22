@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.7.0](https://github.com/shiron-dev/actions/compare/v1.6.5...v1.7.0) (2026-06-22)
+
+
+### Features
+
+* pin self references to the released version tag in the release PR ([#403](https://github.com/shiron-dev/actions/issues/403)) ([4dcf547](https://github.com/shiron-dev/actions/commit/4dcf5479ce2516b73e08b076899c183af2e27f24))
+
+
+### Bug Fixes
+
+* use local action refs in workflows so the release build can push ([#405](https://github.com/shiron-dev/actions/issues/405)) ([6902211](https://github.com/shiron-dev/actions/commit/690221147210eed401a5b56f6ffefa8044ebfd3c))
+
 ## [1.6.5](https://github.com/shiron-dev/actions/compare/v1.6.4...v1.6.5) (2026-06-22)
 
 
