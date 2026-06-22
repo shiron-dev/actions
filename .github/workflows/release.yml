@@ -34,7 +34,7 @@ jobs:
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
         with:
           ref: ${{ fromJson(needs.release-please.outputs.pr).headBranchName }}
-      - uses: shiron-dev/actions/setup-node@v1.6.5
+      - uses: ./setup-node
       - name: Run install
         working-directory: ./matrix-output-write
         run: |
@@ -59,8 +59,11 @@ jobs:
           # released, inside the release PR, so the released tag is self
           # consistent (no lag). Releases are immutable, so a version tag is
           # safe to use without a commit digest.
+          # Scope to composite action manifests only: GITHUB_TOKEN cannot push
+          # changes under .github/workflows/ (needs the `workflows` permission),
+          # and workflows reference the local actions with `./` anyway.
           grep -rlE 'shiron-dev/actions/[A-Za-z0-9_-]+@' \
-            --include='*.yml' --include='*.yaml' . \
+            --include='action.yml' --include='action.yaml' . \
             | while read -r f; do
                 TAG="$TAG" perl -0777 -pi -e \
                   's{(shiron-dev/actions/[A-Za-z0-9_-]+(?:/[A-Za-z0-9_-]+)*)@\S+(?:[ \t]*#[^\n]*)?}{"$1\@$ENV{TAG}"}ge' \
