@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.6.5](https://github.com/shiron-dev/actions/compare/v1.6.4...v1.6.5) (2026-06-22)
+
+
+### Bug Fixes
+
+* **deps:** update dependency pnpm/pnpm to v11.8.0 ([#400](https://github.com/shiron-dev/actions/issues/400)) ([c6e2174](https://github.com/shiron-dev/actions/commit/c6e217467b0d83493031b000e0cc3164fb9c4fec))
+* **deps:** update dependency typescript to v6 ([#340](https://github.com/shiron-dev/actions/issues/340)) ([3ba65ad](https://github.com/shiron-dev/actions/commit/3ba65ad2fe12ccc0db58aa6b674c6bc7cdb7c79b))
+* **renovate:** remove invalid multilineMatching field ([#396](https://github.com/shiron-dev/actions/issues/396)) ([7798e77](https://github.com/shiron-dev/actions/commit/7798e77b18e8867901e46eb71e3aed7f56f215fe))
+
 ## [1.6.4](https://github.com/shiron-dev/actions/compare/v1.6.3...v1.6.4) (2026-06-15)
 
 
