@@ -69,7 +69,7 @@ jobs:
         working-directory: ./matrix-output-write
     steps:
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
-      - uses: shiron-dev/actions/setup-node@v1.6.5
+      - uses: ./setup-node
       - name: Run install
         run: |
           pnpm install --frozen-lockfile
