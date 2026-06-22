@@ -15,10 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     outputs:
-      release-created: ${{ steps.release.outputs.release_created }}
       pr: ${{ steps.release.outputs.pr }}
-      tag-name: ${{ steps.release.outputs.tag_name }}
-      sha: ${{ steps.release.outputs.sha }}
     steps:
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
         with:
@@ -37,7 +34,7 @@ jobs:
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
         with:
           ref: ${{ fromJson(needs.release-please.outputs.pr).headBranchName }}
-      - uses: shiron-dev/actions/setup-node@84397408739dd8be5cab53d443ae764501063dab # v1.6.4
+      - uses: shiron-dev/actions/setup-node@v1.6.5
       - name: Run install
         working-directory: ./matrix-output-write
         run: |
@@ -46,58 +43,37 @@ jobs:
         working-directory: ./matrix-output-write
         run: |
           pnpm run build
-      - name: Commit changes
-        run: |
-          git add -f matrix-output-write/dist
-          if git diff --cached --quiet; then
-            echo "No changes to the output. Exiting."
-            exit 0
-          fi
-          git config --local user.name "github-actions[bot]"
-          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "chore: build matrix-output-write"
-          git push
-          echo "Changes committed"
-  update-self-refs:
-    runs-on: ubuntu-latest
-    needs: release-please
-    timeout-minutes: 10
-    if: ${{ needs.release-please.outputs.release-created }}
-    steps:
-      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
-      - name: Bump self references to the released digest
+      - name: Pin self references and commit build
         env:
-          # SHA of the commit that was just released (= the release tag commit).
-          SHA: ${{ needs.release-please.outputs.sha }}
-          TAG: ${{ needs.release-please.outputs.tag-name }}
+          # Release PR title, e.g. "chore(main): release 1.6.6".
+          PR_TITLE: ${{ fromJson(needs.release-please.outputs.pr).title }}
         run: |
           set -euo pipefail
-          if [ -z "${SHA:-}" ] || [ -z "${TAG:-}" ]; then
-            echo "Missing release sha/tag; nothing to do."
-            exit 0
+          VERSION=$(printf '%s' "$PR_TITLE" | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -1)
+          if [ -z "$VERSION" ]; then
+            echo "Could not determine release version from PR title: $PR_TITLE" >&2
+            exit 1
           fi
-          # Rewrite every `uses: shiron-dev/actions/<action>@<ref> # <ver>` self
-          # reference so it points at the freshly released digest. This breaks the
-          # circular dependency that Renovate cannot resolve on its own.
+          TAG="v$VERSION"
+          # Pin every shiron-dev/actions self reference to the version being
+          # released, inside the release PR, so the released tag is self
+          # consistent (no lag). Releases are immutable, so a version tag is
+          # safe to use without a commit digest.
           grep -rlE 'shiron-dev/actions/[A-Za-z0-9_-]+@' \
             --include='*.yml' --include='*.yaml' . \
             | while read -r f; do
-                SHA="$SHA" TAG="$TAG" perl -0777 -pi -e \
-                  's{(shiron-dev/actions/[A-Za-z0-9_-]+(?:/[A-Za-z0-9_-]+)*)@\S+(?:[ \t]*#[^\n]*)?}{"$1\@$ENV{SHA} # $ENV{TAG}"}ge' \
+                TAG="$TAG" perl -0777 -pi -e \
+                  's{(shiron-dev/actions/[A-Za-z0-9_-]+(?:/[A-Za-z0-9_-]+)*)@\S+(?:[ \t]*#[^\n]*)?}{"$1\@$ENV{TAG}"}ge' \
                   "$f"
               done
-      - name: Commit changes
-        env:
-          TAG: ${{ needs.release-please.outputs.tag-name }}
-        run: |
-          set -euo pipefail
           git add -A
+          git add -f matrix-output-write/dist
           if git diff --cached --quiet; then
-            echo "Self references already up to date. Exiting."
+            echo "Nothing to commit. Exiting."
             exit 0
           fi
           git config --local user.name "github-actions[bot]"
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "chore: bump self references to ${TAG}"
+          git commit -m "chore: build matrix-output-write and pin self references to ${TAG}"
           git push
-          echo "Self references updated to ${TAG}"
+          echo "Committed build and self references (${TAG})"

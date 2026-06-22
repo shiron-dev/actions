@@ -25,7 +25,7 @@
       "semanticCommitType": "fix"
     },
     {
-      "description": "Self references are bumped by the release workflow, not Renovate, to avoid a circular dependency.",
+      "description": "Self references are pinned to the released version tag by the release workflow (intentionally not digest pinned, since releases are immutable). Renovate must leave shiron-dev/actions alone to avoid a circular dependency.",
       "matchPackageNames": [
         "shiron-dev/actions"
       ],
