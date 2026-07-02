@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.1](https://github.com/shiron-dev/actions/compare/v1.7.0...v1.7.1) (2026-07-02)
+
+
+### Bug Fixes
+
+* **deps:** update dependency pnpm/pnpm to v11.9.0 ([#408](https://github.com/shiron-dev/actions/issues/408)) ([dffde41](https://github.com/shiron-dev/actions/commit/dffde4116ca3d6ae49f4571b0d8e9794a88edb67))
+
 ## [1.7.0](https://github.com/shiron-dev/actions/compare/v1.6.5...v1.7.0) (2026-06-22)
 
 
