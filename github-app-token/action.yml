@@ -29,7 +29,7 @@ runs:
       env:
         APP_ID: ${{ inputs.app-id }}
         PRIVATE_KEY: ${{ inputs.private-key }}
-    - uses: shiron-dev/actions/post-step@v1.7.0
+    - uses: shiron-dev/actions/post-step@v1.7.1
       with:
         post: delete.sh
       env:
