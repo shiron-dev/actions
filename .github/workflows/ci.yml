@@ -49,7 +49,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7
-      - uses: reviewdog/action-actionlint@13465d022aa41c282f730be17574b5ce692d0186 # v1.78.1
+      - uses: reviewdog/action-actionlint@a1e3e7ff7b1f7554e043f455cc78803e773c4a88 # v1.79.0
         with:
           level: warning
           fail_on_error: true
